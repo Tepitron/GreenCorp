@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="GreenCorp"
+run/main_scene="uid://eebybtirek06"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

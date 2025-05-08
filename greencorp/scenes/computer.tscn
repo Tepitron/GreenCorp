@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnr3cufcvuw6y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sc3q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om4aa"]
+albedo_color = Color(0.462745, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 0.172549, 1)
+emission_energy_multiplier = 8.03
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8pqrt"]
+material = SubResource("StandardMaterial3D_om4aa")
+size = Vector2(0.9, 0.9)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pqrt"]
+albedo_color = Color(0, 0.0823529, 0.0666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_om4aa"]
+material = SubResource("StandardMaterial3D_8pqrt")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8pqrt"]
+size = Vector3(3, 0.6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sc3q"]
+albedo_color = Color(0.775598, 0.634922, 0.476025, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_om4aa"]
+material = SubResource("StandardMaterial3D_7sc3q")
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ikar"]
+albedo_color = Color(0.13985, 0.110144, 0.112629, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tjrug"]
+material = SubResource("StandardMaterial3D_7ikar")
+size = Vector2(1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc3q"]
+size = Vector3(1.2442, 0.895569, 1.0321)
+
+[node name="Computer" type="StaticBody3D"]
+transform = Transform3D(0.990075, 0, 0, 0, 0.8333, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ScreenCase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.568159, -0.0581955, 0.714607, -0.200285)
+mesh = SubResource("BoxMesh_7sc3q")
+
+[node name="Screen" type="MeshInstance3D" parent="ScreenCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0037384, 0.56304)
+mesh = SubResource("PlaneMesh_8pqrt")
+
+[node name="Case" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.402042, 0, 0, 0, 0.785866, 0, 0, 0, 1, -1.09085, -0.774555, 0)
+mesh = SubResource("BoxMesh_om4aa")
+skeleton = NodePath("../ScreenCase")
+
+[node name="ComputerDesk" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.732894, 0, 0, 0, 1, 0.828594, -0.0220415, 0)
+mesh = SubResource("BoxMesh_8pqrt")
+
+[node name="DeskLeg" type="MeshInstance3D" parent="ComputerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40597, -1.22035, 0.312618)
+mesh = SubResource("CylinderMesh_om4aa")
+
+[node name="DeskLeg2" type="MeshInstance3D" parent="ComputerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40597, -1.27871, -0.320305)
+mesh = SubResource("CylinderMesh_om4aa")
+
+[node name="DeskLeg3" type="MeshInstance3D" parent="ComputerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38053, -1.22035, -0.308184)
+mesh = SubResource("CylinderMesh_om4aa")
+
+[node name="DeskLeg4" type="MeshInstance3D" parent="ComputerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37396, -1.22035, 0.312618)
+mesh = SubResource("CylinderMesh_om4aa")
+
+[node name="KeyBoard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0652445, 0.202206, 0.322837)
+mesh = SubResource("PlaneMesh_tjrug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.08341, 0, 0, 0, 3.11101, 0, 0, 0, 1, 0.438267, -0.162253, 0.0140345)
+shape = SubResource("BoxShape3D_7sc3q")

@@ -1,23 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://b25fqxjjyvwl"]
 
-[sub_resource type="TorusMesh" id="TorusMesh_7df5l"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_7df5l"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xiacm"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7df5l"]
 
-[node name="LightPost" type="MeshInstance3D"]
-transform = Transform3D(0.254283, 0, 0, 0, -16.4361, 0, 0, 0, 0.182029, -23.0791, 3.42005, -3.33412)
-mesh = SubResource("TorusMesh_7df5l")
-skeleton = NodePath("../..")
+[node name="LightPost" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.97403, 0, 0, 0, 0.000364518, 0.0161989, 0, 3.30256, -0.0145771, -0.470528, -0.252637, 1.8786)
-mesh = SubResource("CapsuleMesh_xiacm")
-skeleton = NodePath("../../..")
+transform = Transform3D(0.0594289, 0, 0, 0, 1.28116, 0, 0, 0, 0.118513, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7df5l")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -0.462476, -0.886632, 0, 0.886632, -0.462476, 0, 0, 0)
-light_color = Color(0.989624, 0.962907, 0.79622, 1)
-light_energy = 12.151
-light_indirect_energy = 3.747
-light_specular = 1.146
-spot_range = 19.222
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.231432, 0, 0, 0, -0.0951921, -0.132285, 0, 0.269786, -0.0466757, 0, 1.24693, 0.120403)
+mesh = SubResource("CapsuleMesh_7df5l")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, -0.180536, -0.983568, 0, 0.983568, -0.180536, 0, 0, 0)
+light_color = Color(1, 1, 0.960784, 1)
+light_energy = 7.788
+light_indirect_energy = 1.97
+light_specular = 1.955

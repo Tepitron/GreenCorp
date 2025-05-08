@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://x2rc4jsfq4c2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myq3q"]
+albedo_color = Color(0.644246, 1, 0.996659, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_myq3q"]
+material = SubResource("StandardMaterial3D_myq3q")
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nrrx"]
+albedo_color = Color(0.428171, 0.315768, 0.193024, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1nrrx"]
+material = SubResource("StandardMaterial3D_1nrrx")
+size = Vector2(5.52, 4)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mudku"]
+albedo_color = Color(0.427451, 0.317647, 0.192157, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_la00o"]
+lightmap_size_hint = Vector2i(29, 4)
+material = SubResource("StandardMaterial3D_mudku")
+size = Vector2(5.52, 0.58)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2e3p7"]
+material = SubResource("StandardMaterial3D_mudku")
+size = Vector2(5.52, 4)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_myq3q"]
+size = Vector3(1, 4, 10)
+
+[node name="WindowedWall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Window" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0736289, 0.410607, -1.53481)
+transparency = 0.86
+mesh = SubResource("PlaneMesh_myq3q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, 0, 2.22181)
+mesh = SubResource("PlaneMesh_1nrrx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.804982, 0.074, 1.69597, -2.75982)
+mesh = SubResource("PlaneMesh_la00o")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.46978, 0, 0, 0, 0.804982, 0.074, -1.29252, -2.75379)
+mesh = SubResource("PlaneMesh_la00o")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.511389, 0, 0, 0, 0.441454, 0.074, 0.43019, -3.75176)
+mesh = SubResource("PlaneMesh_2e3p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_myq3q")

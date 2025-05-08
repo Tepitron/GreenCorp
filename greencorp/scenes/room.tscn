@@ -1,9 +1,141 @@
-[gd_scene format=3 uid="uid://eebybtirek06"]
+[gd_scene load_steps=19 format=3 uid="uid://ci0kb1vaqrhjb"]
+
+[ext_resource type="PackedScene" uid="uid://bjxusjwwq7olr" path="res://scenes/player.tscn" id="1_36trf"]
+[ext_resource type="Script" uid="uid://c4r81c6c0j0gp" path="res://scripts/room.gd" id="1_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://x2rc4jsfq4c2" path="res://scenes/windowed_wall.tscn" id="3_85yof"]
+[ext_resource type="PackedScene" uid="uid://bs3c61idtfgxc" path="res://scenes/road.tscn" id="4_14vil"]
+[ext_resource type="PackedScene" uid="uid://b4txa3ojbo4jb" path="res://scenes/green_corp_building.tscn" id="5_jxe34"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36trf"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ffxv4"]
+sky_material = SubResource("ProceduralSkyMaterial_36trf")
+
+[sub_resource type="Environment" id="Environment_85yof"]
+background_mode = 2
+sky = SubResource("Sky_ffxv4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxe34"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.427451, 0.317647, 0.192157, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ffxv4"]
+material = SubResource("StandardMaterial3D_jxe34")
+size = Vector2(10, 4)
+center_offset = Vector3(0, -2, 10)
+orientation = 2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ffxv4"]
+points = PackedVector3Array(-5.07738, -4.07937, 9.92064, 5.07738, 0.0476189, 10.0794, 5.07738, 0.0476189, 9.92064, -5.07738, 0.0476189, 10.0794, 5.07738, -4.07937, 10.0794, 5.07738, -4.07937, 9.92064, -5.07738, 0.0476189, 9.92064, -5.07738, -4.07937, 10.0794)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn645"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.427451, 0.317647, 0.192157, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14vil"]
+lightmap_size_hint = Vector2i(52, 22)
+material = SubResource("StandardMaterial3D_jn645")
+size = Vector2(10, 4)
+orientation = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jxe34"]
+points = PackedVector3Array(0.079334, 2.04762, 5.07738, -0.079334, -2.07937, -5.07738, 0.079334, -2.07937, -5.07738, -0.079334, -2.07937, 5.07738, -0.079334, 2.04762, -5.07738, 0.079334, 2.04762, -5.07738, 0.079334, -2.07937, 5.07738, -0.079334, 2.04762, 5.07738)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvc4m"]
+albedo_color = Color(0.269105, 0.147137, 5.05373e-07, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_36trf"]
+material = SubResource("StandardMaterial3D_qvc4m")
+size = Vector2(11, 11)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14vil"]
+points = PackedVector3Array(5.07738, 0.079334, 5.07738, -5.07738, -0.079334, -5.07738, -5.07738, 0.079334, -5.07738, 5.07738, -0.079334, -5.07738, -5.07738, -0.079334, 5.07738, -5.07738, 0.079334, 5.07738, 5.07738, 0.079334, -5.07738, 5.07738, -0.079334, 5.07738)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jxe34"]
+flip_faces = true
+size = Vector2(10, 10)
 
 [node name="Room" type="Node3D"]
+script = ExtResource("1_ffxv4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.642428, 1)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_85yof")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.49499)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0.263882, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_36trf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.22253, 0)
+
+[node name="Interior" type="Node" parent="."]
+
+[node name="walls" type="Node" parent="Interior"]
+
+[node name="Wall" type="StaticBody3D" parent="Interior/walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interior/walls/Wall"]
+transform = Transform3D(1, 0.000198576, -6.74525e-05, -0.000198557, 1, 0.000209895, 6.7509e-05, -0.000209877, 1, -0.038238, -1.4838, -14.9684)
+mesh = SubResource("PlaneMesh_ffxv4")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/walls/Wall"]
+transform = Transform3D(1, 0.000198576, -6.74525e-05, -0.000198557, 1, 0.000209895, 6.7509e-05, -0.000209877, 1, -0.038238, -1.4838, -14.9684)
+shape = SubResource("ConvexPolygonShape3D_ffxv4")
+
+[node name="Wall2" type="StaticBody3D" parent="Interior/walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interior/walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99657, -3.50926, 0)
+mesh = SubResource("PlaneMesh_14vil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99657, -3.50926, 0)
+shape = SubResource("ConvexPolygonShape3D_jxe34")
+
+[node name="Wall3" type="StaticBody3D" parent="Interior/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0786, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interior/walls/Wall3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.1655, -3.50926, -0.010188)
+mesh = SubResource("PlaneMesh_14vil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99657, -3.50926, 0)
+shape = SubResource("ConvexPolygonShape3D_jxe34")
+
+[node name="WindowedWall" parent="Interior/walls" instance=ExtResource("3_85yof")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0122451, -3.80277, 4.77139)
+
+[node name="Floor" type="StaticBody3D" parent="Interior"]
+transform = Transform3D(1, 5.55112e-17, 4.9973e-15, 7.87348e-16, -4.4005e-08, -1, 2.77556e-17, 1, -4.37722e-08, 2.98962e-08, -5.36024, 0.00936658)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interior/Floor"]
+transform = Transform3D(1, 4.9973e-15, -5.5511e-17, -2.77556e-17, -4.37722e-08, 1, 7.87348e-16, -1, -4.4005e-08, -0.0131836, -0.0160838, 0.142696)
+mesh = SubResource("PlaneMesh_36trf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Floor"]
+transform = Transform3D(1, 4.9973e-15, -5.5511e-17, -2.77556e-17, -4.37722e-08, 1, 7.87348e-16, -1, -4.4005e-08, -2.98962e-08, -0.00936657, 0.13498)
+shape = SubResource("ConvexPolygonShape3D_14vil")
+
+[node name="Roof" type="MeshInstance3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("PlaneMesh_jxe34")
+
+[node name="Exterior" type="Node" parent="."]
+
+[node name="GreenCorpBuilding" parent="Exterior" instance=ExtResource("5_jxe34")]
+transform = Transform3D(-1, 0, 4.0873e-08, 0, 1, 0, -8.74228e-08, 0, -0.467532, -3.24397, -10.8642, 59.4665)
+
+[node name="Road" parent="." instance=ExtResource("4_14vil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.152, -8.12182, 15.5139)
+
+[node name="Road" parent="Road" instance=ExtResource("4_14vil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, -0.0111446, 0.0679731)

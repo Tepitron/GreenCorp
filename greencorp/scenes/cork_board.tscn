@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://eyi6gk1km13i"]
+
+[ext_resource type="Texture2D" uid="uid://b5gc41d8hevyk" path="res://art/textures/Cork004_1K-JPG_Color.jpg" id="1_jlx20"]
+[ext_resource type="Script" uid="uid://d4j2hcbdk3i2u" path="res://scripts/cork_board.gd" id="1_xxamb"]
+[ext_resource type="Texture2D" uid="uid://dn3ll0yx1hfp2" path="res://art/textures/Cork004_1K-JPG_Roughness.jpg" id="2_feobo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feobo"]
+albedo_texture = ExtResource("1_jlx20")
+roughness_texture = ExtResource("2_feobo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2n5p4"]
+material = SubResource("StandardMaterial3D_feobo")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_giqja"]
+size = Vector3(2.5, 1.7, 0.061)
+
+[node name="CorkBoard" type="Node3D"]
+script = ExtResource("1_xxamb")
+
+[node name="BackBoardMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.6094, 0, 0, 0, 8.10992, 0, 0, 0, 9.41862, 0, 0, 0)
+mesh = SubResource("QuadMesh_2n5p4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0172424)
+shape = SubResource("BoxShape3D_giqja")

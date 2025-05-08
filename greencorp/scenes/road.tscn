@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs3c61idtfgxc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy6l0"]
+albedo_color = Color(0.133333, 0.0901961, 0.137255, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7icjy"]
+material = SubResource("StandardMaterial3D_fy6l0")
+size = Vector2(50, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ekj83"]
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7icjy"]
+points = PackedVector3Array(25.1314, -0.141243, 2.72599, -25.1314, -0.141243, -2.64124, 25.1314, -0.141243, -2.64124, -25.1314, -0.141243, 2.72599)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="RoadPiece" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.335573, 0, 0, 0, 1, 0, 0, 0, 1, -16.464, 0, 0)
+mesh = SubResource("PlaneMesh_7icjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -22.3471, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -12.4531, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -2.55919, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 7.33477, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 17.2287, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="RoadPiece" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.1471, 0, 0)
+mesh = SubResource("PlaneMesh_7icjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RoadPiece/RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -22.3471, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RoadPiece/RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -12.4531, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RoadPiece/RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -2.55919, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RoadPiece/RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 7.33477, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="RoadPiece/RoadPiece"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 17.2287, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="RoadPiece2" type="MeshInstance3D" parent="RoadPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.474, 0, 0)
+mesh = SubResource("PlaneMesh_7icjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RoadPiece/RoadPiece2"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -22.3471, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RoadPiece/RoadPiece2"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -12.4531, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RoadPiece/RoadPiece2"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, -2.55919, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RoadPiece/RoadPiece2"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 7.33477, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="RoadPiece/RoadPiece2"]
+transform = Transform3D(3.29799, 0, 0, 0, 1, 0, 0, 0, 1, 17.2287, 0.021, 0)
+mesh = SubResource("PlaneMesh_ekj83")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_7icjy")

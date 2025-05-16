@@ -103,7 +103,7 @@ shape = SubResource("ConvexPolygonShape3D_qvc4m")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0122451, -3.80277, 4.77139)
 
 [node name="CorkBoard" parent="." instance=ExtResource("2_ffxv4")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.88231, -3.1907, 1.6865)
+transform = Transform3D(-2.73134e-08, 0, -1, 0, 0.587427, 0, 0.624857, 0, -4.37114e-08, 4.7427, -3.44817, 0.648906)
 
 [node name="Computer" parent="." instance=ExtResource("3_14vil")]
 transform = Transform3D(-3.89847e-08, 0, 1, 0, 0.672274, 0, -0.891866, 0, -4.37114e-08, -4.19784, -4.41324, -2.70309)

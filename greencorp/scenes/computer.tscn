@@ -39,10 +39,9 @@ material = SubResource("StandardMaterial3D_7ikar")
 size = Vector2(1, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7sc3q"]
-size = Vector3(1.2442, 0.895569, 1.0321)
+size = Vector3(4, 3, 1.032)
 
 [node name="Computer" type="StaticBody3D"]
-transform = Transform3D(0.990075, 0, 0, 0, 0.8333, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="ScreenCase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.568159, -0.0581955, 0.714607, -0.200285)
@@ -82,5 +81,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0652445, 0.202206, 0.32283
 mesh = SubResource("PlaneMesh_tjrug")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3.08341, 0, 0, 0, 3.11101, 0, 0, 0, 1, 0.438267, -0.162253, 0.0140345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438267, -0.162253, 0.0140345)
 shape = SubResource("BoxShape3D_7sc3q")

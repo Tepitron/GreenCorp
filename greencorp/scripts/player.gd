@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
+@onready var ray_cast_3d: RayCast3D = $TwistPivot/PitchPivot/Camera3D/RayCast3D
 
 var mouse_sensitivity := 0.005
 var twist_input := 0.0
@@ -28,6 +29,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	var raycast_collided_object = ray_cast_3d.get_collider()
+	print_debug(raycast_collided_object)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

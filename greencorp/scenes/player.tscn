@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjxusjwwq7olr"]
+[gd_scene load_steps=5 format=3 uid="uid://bjxusjwwq7olr"]
 
 [ext_resource type="Script" uid="uid://d3xxsq4c65l36" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://dvnn2g1b4scxh" path="res://art/sprites/icon.svg" id="2_g2els"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
 
@@ -22,3 +23,12 @@ shape = SubResource("ConvexPolygonShape3D_3vyb7")
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597762, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="TwistPivot/PitchPivot/Camera3D"]
+transform = Transform3D(0.0258125, 0, 0, 0, 0.0279712, 0, 0, 0, 1, 0, 0, -1.17598)
+texture = ExtResource("2_g2els")
+
+[node name="RayCast3D" type="RayCast3D" parent="TwistPivot/PitchPivot/Camera3D"]
+transform = Transform3D(1, 8.74228e-08, 0, 3.82137e-15, -4.37114e-08, 0.000805378, -8.74228e-08, 1, 3.52042e-11, 0, 0.0276222, -0.612229)
+target_position = Vector3(0, -2, 0)
+collide_with_areas = true

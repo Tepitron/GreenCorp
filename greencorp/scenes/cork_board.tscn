@@ -26,9 +26,9 @@ script = ExtResource("1_xxamb")
 transform = Transform3D(12.6094, 0, 0, 0, 8.10992, 0, 0, 0, 9.41862, 0, 0, 0)
 mesh = SubResource("QuadMesh_2n5p4")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="CorkBoardArea3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CorkBoardArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00378418, 0.0239196, 0.0172424)
 shape = SubResource("BoxShape3D_giqja")
 
@@ -47,5 +47,5 @@ region_rect = Rect2(279.134, 55.0953, 297.102, 228.721)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80523, -1.40346, 0)
 shape = SubResource("BoxShape3D_vvolg")
 
-[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="input_event" from="CorkBoardArea3D" to="." method="_on_area_3d_input_event"]
 [connection signal="input_event" from="ExitButton" to="." method="_on_exit_button_input_event"]

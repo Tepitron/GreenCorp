@@ -11,17 +11,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-		
-func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	print_debug("Input event happened")
-	if event.is_action_pressed("interact") && is_in_detective_mode == false:
-		print_debug("Corkboard clicked")
-		activate_detective_wall_mode()
-
-func activate_detective_wall_mode():
-	$Camera3D.current = true
-	is_in_detective_mode = true
-	$ExitButton.show()
 
 func _on_exit_button_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):

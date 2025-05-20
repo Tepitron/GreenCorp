@@ -2,11 +2,11 @@ extends CharacterBody3D
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
-@onready var ray_cast_3d: RayCast3D = $TwistPivot/PitchPivot/Camera3D/RayCast3D
 
 var mouse_sensitivity := 0.005
 var twist_input := 0.0
 var pitch_input := 0.0
+var is_frozen := false
 
 const SPEED = 5.0
 
@@ -14,8 +14,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
@@ -29,8 +27,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	var raycast_collided_object = ray_cast_3d.get_collider()
-	print_debug(raycast_collided_object)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -50,11 +46,27 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
-
+	
+	if !is_frozen:
+		move_and_slide()
+		
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
+
+func activate_interaction_mode():
+	#Hides the player character
+	hide()
+	# Freezes the player in place to prevent movement
+	is_frozen = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+func activate_freeroam_mode():
+	# Shows the player character
+	show()
+	# Unfreezes the player
+	is_frozen = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	

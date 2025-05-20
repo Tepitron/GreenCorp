@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnr3cufcvuw6y"]
+[gd_scene load_steps=13 format=3 uid="uid://cnr3cufcvuw6y"]
+
+[ext_resource type="Script" uid="uid://dxchps3eudicc" path="res://scripts/computer.gd" id="1_om4aa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7sc3q"]
 
@@ -42,6 +44,7 @@ size = Vector2(1, 0.3)
 size = Vector3(4, 3, 1.032)
 
 [node name="Computer" type="StaticBody3D"]
+script = ExtResource("1_om4aa")
 
 [node name="ScreenCase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.568159, -0.0581955, 0.714607, -0.200285)
@@ -83,3 +86,6 @@ mesh = SubResource("PlaneMesh_tjrug")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438267, -0.162253, 0.0140345)
 shape = SubResource("BoxShape3D_7sc3q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.960079, 0.279728, 0, -0.279728, 0.960079, 0.112636, 0.887317, 0.883276)

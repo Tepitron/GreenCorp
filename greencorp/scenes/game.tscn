@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5fnv1x0ads5p"]
+[gd_scene load_steps=12 format=3 uid="uid://c5fnv1x0ads5p"]
 
 [ext_resource type="Script" uid="uid://c4r81c6c0j0gp" path="res://scripts/room.gd" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bjxusjwwq7olr" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b25fqxjjyvwl" path="res://scenes/light_post.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bs3c61idtfgxc" path="res://scenes/road.tscn" id="6_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://bx7ck2ll4vls7" path="res://scenes/car.tscn" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bpqm3pbdrahvb" path="res://scenes/pause_menu.tscn" id="8_gee14"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36trf"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -74,3 +75,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.152, -8.12182, 15.5139)
 
 [node name="Road" parent="Road" instance=ExtResource("6_kvpfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, -0.0111446, 0.0679731)
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_gee14")]

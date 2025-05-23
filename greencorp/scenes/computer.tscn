@@ -1,6 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnr3cufcvuw6y"]
+[gd_scene load_steps=14 format=3 uid="uid://cnr3cufcvuw6y"]
 
 [ext_resource type="Script" uid="uid://dxchps3eudicc" path="res://scripts/computer.gd" id="1_om4aa"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_om4aa"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7sc3q"]
 
@@ -41,23 +44,30 @@ material = SubResource("StandardMaterial3D_7ikar")
 size = Vector2(1, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7sc3q"]
-size = Vector3(4, 3, 1.032)
+size = Vector3(4, 3, 0.9)
 
 [node name="Computer" type="StaticBody3D"]
 script = ExtResource("1_om4aa")
 
-[node name="ScreenCase" type="MeshInstance3D" parent="."]
+[node name="ScreenArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0581955, 0.714607, -0.200285)
+shape = SubResource("ConvexPolygonShape3D_om4aa")
+
+[node name="ScreenCase" type="MeshInstance3D" parent="ScreenArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.568159, -0.0581955, 0.714607, -0.200285)
 mesh = SubResource("BoxMesh_7sc3q")
+skeleton = NodePath("../..")
 
-[node name="Screen" type="MeshInstance3D" parent="ScreenCase"]
+[node name="Screen" type="MeshInstance3D" parent="ScreenArea3D/ScreenCase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0037384, 0.56304)
 mesh = SubResource("PlaneMesh_8pqrt")
 
 [node name="Case" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.402042, 0, 0, 0, 0.785866, 0, 0, 0, 1, -1.09085, -0.774555, 0)
 mesh = SubResource("BoxMesh_om4aa")
-skeleton = NodePath("../ScreenCase")
+skeleton = NodePath("../ScreenArea3D/ScreenCase")
 
 [node name="ComputerDesk" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.732894, 0, 0, 0, 1, 0.828594, -0.0220415, 0)
@@ -84,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0652445, 0.202206, 0.32283
 mesh = SubResource("PlaneMesh_tjrug")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438267, -0.162253, 0.0140345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.439232, -0.174338, 0.0483851)
 shape = SubResource("BoxShape3D_7sc3q")
 
 [node name="Camera3D" type="Camera3D" parent="."]

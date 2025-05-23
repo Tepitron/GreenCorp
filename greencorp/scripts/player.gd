@@ -13,7 +13,7 @@ const SPEED = 5.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
@@ -61,7 +61,7 @@ func activate_interaction_mode():
 	hide()
 	# Freezes the player in place to prevent movement
 	is_frozen = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 func activate_freeroam_mode():
 	# Shows the player character

@@ -5,21 +5,25 @@ extends Node3D
 @onready var corkboard_camera = $Interior/Room/CorkBoard/Camera3D
 @onready var player_camera = $Player/TwistPivot/PitchPivot/Camera3D
 @onready var corkboard = $Interior/Room/CorkBoard
-@onready var computer = $Interior/Room/Computer
+@onready var computer_screen = $Interior/Room/Computer/ScreenArea3D
 @onready var computer_camera = $Interior/Room/Computer/Camera3D
+@onready var post_it_pile = $Interior/Room/PostItPile
 @onready var player = $Player
+
+const POST_IT = preload("res://scenes/post_it.tscn")
 
 var raycast_collided_with
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#print_debug(player.position)
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Get raycast's collision from player
 	raycast_collided_with = ray_cast_3d.get_collider()
 	
@@ -37,9 +41,14 @@ func _input(event: InputEvent) -> void:
 		if raycast_collided_with == corkboard_area_3d:
 			print_debug("Corkboard clicked")
 			on_corkboard_clicked()
-		if raycast_collided_with == computer:
+		if raycast_collided_with == computer_screen:
+			
 			print_debug("Computer clicked")
 			on_computer_clicked()
+		
+		if raycast_collided_with == post_it_pile:
+			print_debug("Post it pile clicked")
+			pickup_post_it()
 			
 	elif event.is_action_pressed("cancel"):
 		print_debug("Escape pressed")
@@ -58,3 +67,8 @@ func on_computer_clicked():
 func _on_cancel_pressed():
 	player.activate_freeroam_mode()
 	player_camera.current = true
+
+func pickup_post_it():
+	var post_it = POST_IT.instantiate()
+	post_it.position = player.position 
+	player_camera.add_child(post_it)

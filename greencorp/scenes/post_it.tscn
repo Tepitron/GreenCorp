@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://crpgap81v3r4w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv0rs"]
+albedo_color = Color(1, 1, 0.105882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2nu5"]
+material = SubResource("StandardMaterial3D_kv0rs")
+
+[node name="PostIt" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_u2nu5")

@@ -3,18 +3,16 @@
 [ext_resource type="Script" uid="uid://cusuinxuro868" path="res://scripts/computer_2d.gd" id="1_8pek1"]
 [ext_resource type="Texture2D" uid="uid://s2rg0dhsv2u5" path="res://art/sprites/computer_2d_screenshot.PNG" id="2_iwtpn"]
 [ext_resource type="PackedScene" uid="uid://bpqm3pbdrahvb" path="res://scenes/pause_menu.tscn" id="3_iwtpn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvjh4"]
-size = Vector2(797, 573)
+[ext_resource type="Texture2D" uid="uid://bm3qmyyn33dwq" path="res://art/sprites/post_it_placeholder.png" id="4_xa5ji"]
 
 [node name="ComputerScreen" type="Node2D"]
 script = ExtResource("1_8pek1")
 
 [node name="ScreenArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenArea"]
-position = Vector2(414, 323)
-shape = SubResource("RectangleShape2D_hvjh4")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="ScreenArea"]
+position = Vector2(516.25, 345.25)
+polygon = PackedVector2Array(281.75, 301.75, 337.75, -266.25, -302.25, -266.25, -246.25, 301.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(541, 359.5)
@@ -22,3 +20,68 @@ scale = Vector2(0.998152, 1)
 texture = ExtResource("2_iwtpn")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_iwtpn")]
+visible = false
+top_level = true
+
+[node name="BootingText" type="RichTextLabel" parent="."]
+offset_left = 229.0
+offset_top = 80.0
+offset_right = 388.0
+offset_bottom = 121.0
+bbcode_enabled = true
+text = "[color=green][b]Booting . . .[/b][/color]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="UsernameLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 390.0
+offset_top = 501.0
+offset_right = 771.0
+offset_bottom = 538.0
+bbcode_enabled = true
+text = "[color=green]Enter username:[/color]"
+
+[node name="UsernameInputLabel" type="RichTextLabel" parent="UsernameLabel"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = -1.0
+offset_right = 323.0
+offset_bottom = 30.0
+text = "Visitor"
+
+[node name="PasswordLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 392.0
+offset_top = 530.0
+offset_right = 673.0
+offset_bottom = 597.0
+bbcode_enabled = true
+text = "[color=green]Enter passcode:[/color]"
+
+[node name="PasswordInputLabel" type="RichTextLabel" parent="PasswordLabel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 2.0
+offset_right = 299.0
+offset_bottom = 33.0
+text = "Passcode here"
+
+[node name="Label" type="RichTextLabel" parent="PasswordLabel"]
+visible = false
+layout_mode = 0
+offset_left = 147.0
+offset_top = 32.0
+offset_right = 312.0
+offset_bottom = 64.0
+bbcode_enabled = true
+text = "[color=red]Wrong passcode[/color]"
+
+[node name="PostItPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(929, 199)
+rotation = 0.0174533
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_xa5ji")
+
+[connection signal="mouse_entered" from="ScreenArea" to="." method="_on_screen_area_mouse_entered"]
+[connection signal="gui_input" from="PasswordLabel/PasswordInputLabel" to="." method="_on_password_input_label_gui_input"]

@@ -8,10 +8,10 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 [sub_resource type="BoxMesh" id="BoxMesh_7sc3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om4aa"]
-albedo_color = Color(0.462745, 1, 1, 1)
+albedo_color = Color(0.0123259, 0.0467953, 0.0500268, 1)
 emission_enabled = true
-emission = Color(0, 0, 0.172549, 1)
-emission_energy_multiplier = 8.03
+emission = Color(0, 0, 0.054902, 1)
+emission_energy_multiplier = 0.53
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8pqrt"]
 material = SubResource("StandardMaterial3D_om4aa")

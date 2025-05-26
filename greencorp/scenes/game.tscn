@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c5fnv1x0ads5p"]
 
-[ext_resource type="Script" uid="uid://c4r81c6c0j0gp" path="res://scripts/room.gd" id="1_p57ef"]
+[ext_resource type="Script" uid="uid://b3e03r6lo38uq" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bjxusjwwq7olr" path="res://scenes/player.tscn" id="2_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ci0kb1vaqrhjb" path="res://scenes/room.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b4txa3ojbo4jb" path="res://scenes/green_corp_building.tscn" id="4_0tnpc"]
@@ -23,7 +23,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_p57ef")
+script = ExtResource("1_gee14")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_85yof")
@@ -77,3 +77,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.152, -8.12182, 15.5139)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, -0.0111446, 0.0679731)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_gee14")]
+clip_contents = true

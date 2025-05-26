@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj8k0545qy5b8"]
+
+[ext_resource type="Script" uid="uid://cusuinxuro868" path="res://scripts/computer_2d.gd" id="1_8pek1"]
+[ext_resource type="Texture2D" uid="uid://s2rg0dhsv2u5" path="res://art/sprites/computer_2d_screenshot.PNG" id="2_iwtpn"]
+[ext_resource type="PackedScene" uid="uid://bpqm3pbdrahvb" path="res://scenes/pause_menu.tscn" id="3_iwtpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvjh4"]
+size = Vector2(797, 573)
+
+[node name="ComputerScreen" type="Node2D"]
+script = ExtResource("1_8pek1")
+
+[node name="ScreenArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenArea"]
+position = Vector2(414, 323)
+shape = SubResource("RectangleShape2D_hvjh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(541, 359.5)
+scale = Vector2(0.998152, 1)
+texture = ExtResource("2_iwtpn")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_iwtpn")]

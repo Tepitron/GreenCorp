@@ -2,11 +2,14 @@ extends CharacterBody3D
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
+@onready var raycast     := $TwistPivot/PitchPivot/Camera3D/RayCast3D
+@onready var crosshair := $UI/TextureRect
 
 var mouse_sensitivity := 0.005
 var twist_input := 0.0
 var pitch_input := 0.0
 var is_frozen := false
+var freeroam_mode := true
 
 const SPEED = 5.0
 
@@ -62,6 +65,9 @@ func activate_interaction_mode():
 	# Freezes the player in place to prevent movement
 	is_frozen = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	#raycast.set_enabled(false)
+	crosshair.hide()
+	freeroam_mode = false
 	
 func activate_freeroam_mode():
 	# Shows the player character
@@ -69,4 +75,10 @@ func activate_freeroam_mode():
 	# Unfreezes the player
 	is_frozen = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#raycast.set_enabled(true)
+	raycast.clear_exceptions()
+	crosshair.show()
+	freeroam_mode = true
 	
+func is_in_freeroam_mode():
+	return freeroam_mode 
